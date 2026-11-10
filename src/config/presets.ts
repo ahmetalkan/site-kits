@@ -61,7 +61,7 @@ export const presets: Preset[] = [
   {
     slug: 'sleep',
     site: 'https://sleepclinicdirectory.com/',
-    demoUrl: 'https://site-kits-sleep.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/sleep/',
     brand: 'SleepClinicDirectory',
     themeName: 'ClinicKit',
     vertical: 'clinic',
@@ -192,7 +192,7 @@ export const presets: Preset[] = [
   {
     slug: 'doctors',
     site: 'https://findsleepdoctors.com/',
-    demoUrl: 'https://site-kits-doctors.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/doctors/',
     brand: 'FindSleepDoctors',
     themeName: 'ClinicKit',
     vertical: 'clinic',
@@ -323,7 +323,7 @@ export const presets: Preset[] = [
   {
     slug: 'au',
     site: 'https://sleepclinicsau.com/',
-    demoUrl: 'https://site-kits-au.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/au/',
     brand: 'SleepClinics AU',
     themeName: 'ClinicKit',
     vertical: 'clinic',
@@ -454,7 +454,7 @@ export const presets: Preset[] = [
   {
     slug: 'de',
     site: 'https://schlafklinikfinder.com/',
-    demoUrl: 'https://site-kits-de.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/de/',
     brand: 'Schlafklinikfinder',
     themeName: 'ClinicKit',
     vertical: 'clinic',
@@ -585,7 +585,7 @@ export const presets: Preset[] = [
   {
     slug: 'guide',
     site: 'https://sleepclinicguide.com/',
-    demoUrl: 'https://site-kits-guide.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/guide/',
     brand: 'SleepClinicGuide',
     themeName: 'ClinicKit',
     vertical: 'clinic',
@@ -716,7 +716,7 @@ export const presets: Preset[] = [
   {
     slug: 'peds',
     site: 'https://frenectomyguide.com/',
-    demoUrl: 'https://site-kits-peds.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/peds/',
     brand: 'Frenectomy Guide',
     themeName: 'ClinicKit',
     vertical: 'clinic',
@@ -847,7 +847,7 @@ export const presets: Preset[] = [
   {
     slug: 'dental',
     site: 'https://qsedationdentistry.com/',
-    demoUrl: 'https://site-kits-dental.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/dental/',
     brand: 'Q Sedation',
     themeName: 'ClinicKit',
     vertical: 'clinic',
@@ -978,7 +978,7 @@ export const presets: Preset[] = [
   {
     slug: 'eye',
     site: 'https://chalazionguide.com/',
-    demoUrl: 'https://site-kits-eye.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/eye/',
     brand: 'Chalazion Guide',
     themeName: 'ClinicKit',
     vertical: 'clinic',
@@ -1109,7 +1109,7 @@ export const presets: Preset[] = [
   {
     slug: 'sauna',
     site: 'https://dipandheat.com/',
-    demoUrl: 'https://site-kits-sauna.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/sauna/',
     brand: 'Dip & Heat',
     themeName: 'TradeKit',
     vertical: 'trade',
@@ -1240,7 +1240,7 @@ export const presets: Preset[] = [
   {
     slug: 'garage',
     site: 'https://garagevertical.com/',
-    demoUrl: 'https://site-kits-garage.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/garage/',
     brand: 'GarageVertical',
     themeName: 'TradeKit',
     vertical: 'trade',
@@ -1371,7 +1371,7 @@ export const presets: Preset[] = [
   {
     slug: 'golf',
     site: 'https://golfbayguide.com/',
-    demoUrl: 'https://site-kits-golf.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/golf/',
     brand: 'GolfBayGuide',
     themeName: 'TradeKit',
     vertical: 'trade',
@@ -1502,7 +1502,7 @@ export const presets: Preset[] = [
   {
     slug: 'charter',
     site: 'https://superyachtcharterguide.com/',
-    demoUrl: 'https://site-kits-charter.pages.dev/',
+    demoUrl: 'https://ahmetalkan.github.io/site-kits/charter/',
     brand: 'SYC Guide',
     themeName: 'CharterKit',
     vertical: 'charter',

@@ -1,5 +1,5 @@
 ---
-import { nav, preset } from '../config/site'
+import { nav, preset, href } from '../config/site'
 import Icon from './Icon.astro'
 
 const path = Astro.url.pathname
@@ -15,7 +15,7 @@ const initials = preset.brand
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/">
+    <a class="brand" href={href('/')}>
       <span class="brand-mark" aria-hidden="true">{initials}</span>
       <span>{preset.brand}</span>
     </a>
@@ -26,7 +26,7 @@ const initials = preset.brand
       ))}
     </nav>
 
-    <a class="btn btn-small header-cta" href={preset.hero.primaryHref}>{preset.hero.primaryCta}</a>
+    <a class="btn btn-small header-cta" href={href(preset.hero.primaryHref)}>{preset.hero.primaryCta}</a>
 
     <details class="nav-toggle">
       <summary><Icon name="menu" size={18} /> Menu</summary>

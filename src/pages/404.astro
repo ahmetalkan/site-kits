@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import { preset } from '../config/site'
+import { preset, href } from '../config/site'
 ---
 
 <BaseLayout
@@ -15,8 +15,8 @@ import { preset } from '../config/site'
       <h1>That page does not exist.</h1>
       <p class="lede" style="margin-top:1rem">The link may be old, or the page may have moved. Start from the homepage or the guides index.</p>
       <p style="margin-top:1.6rem">
-        <a class="btn" href="/">Back to the homepage</a>
-        <a class="btn btn-secondary" href="/blog/">Read the guides</a>
+        <a class="btn" href={href('/')}>Back to the homepage</a>
+        <a class="btn btn-secondary" href={href('/blog/')}>Read the guides</a>
       </p>
     </div>
   </section>

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import { preset } from '../../config/site'
+import { preset, href } from '../../config/site'
 import type { Post } from '../../config/presets'
 import type { GetStaticPaths } from 'astro'
 
@@ -43,7 +43,7 @@ const formatted = new Date(post.date).toLocaleDateString('en-US', {
         <h1>{post.title}</h1>
         <p class="muted"><time datetime={post.date}>{formatted}</time> · {preset.brand}</p>
         <Fragment set:html={post.body} />
-        <p><a href="/blog/">← All guides</a></p>
+        <p><a href={href('/blog/')}>← All guides</a></p>
       </div>
     </div>
   </article>

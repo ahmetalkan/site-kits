@@ -4,6 +4,10 @@
 
 Built for local-service and directory projects that need a credible site in an afternoon rather than a blank starter.
 
+[![Deploy demos](https://github.com/ahmetalkan/site-kits/actions/workflows/deploy.yml/badge.svg)](https://github.com/ahmetalkan/site-kits/actions/workflows/deploy.yml)
+
+**[Live demos →](https://ahmetalkan.github.io/site-kits/)**
+
 ![ClinicKit sleep preset](docs/preview-sleep.png)
 
 ## The three cores
@@ -29,13 +33,22 @@ Build one preset:
 SITE_PRESET=sleep OUT_DIR=dist/sleep npm run build
 ```
 
-Build all twelve:
+Build all twelve for deployment under a base path:
 
 ```bash
 npm run build:all
+npm run showcase
 ```
 
-That writes `dist/<preset>/` for every preset. `npm run build:all -- sleep de` builds a subset.
+That writes `dist/<preset>/` for every preset with `BASE_PATH=/site-kits/<preset>`, then generates `dist/index.html`, the collection page used by the live demos. `npm run build:all -- sleep de` builds a subset.
+
+Override the base path when hosting somewhere else:
+
+```bash
+BASE_PATH=/themes/sleep npm run build:all -- sleep
+```
+
+`npm run build` without `BASE_PATH` builds for the domain root, which is what `npm run dev` and `npm run preview` expect.
 
 ## What a preset defines
 
@@ -114,7 +127,8 @@ No component changes are required.
 | --- | --- |
 | `npm run dev` | Dev server for `SITE_PRESET` (defaults to `sleep`) |
 | `npm run build` | Build the active preset to `dist/` |
-| `npm run build:all` | Build all presets to `dist/<slug>/` |
+| `npm run build:all` | Build all presets to `dist/<slug>/` under `/site-kits/<slug>` |
+| `npm run showcase` | Generate `dist/index.html`, the demo collection page |
 | `npm run preview` | Preview the last build |
 | `npm run check` | Astro + TypeScript diagnostics |
 

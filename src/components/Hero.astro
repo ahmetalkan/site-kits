@@ -1,5 +1,5 @@
 ---
-import { preset } from '../config/site'
+import { preset, href } from '../config/site'
 import Icon from './Icon.astro'
 
 const { hero, stats } = preset
@@ -18,11 +18,11 @@ const note = {
       <h1>{hero.title}</h1>
       <p class="lede">{hero.body}</p>
       <div class="hero-actions">
-        <a class="btn" href={hero.primaryHref}>
+        <a class="btn" href={href(hero.primaryHref)}>
           {hero.primaryCta}
           <Icon name="arrow" size={18} />
         </a>
-        <a class="btn btn-secondary" href={hero.secondaryHref}>{hero.secondaryCta}</a>
+        <a class="btn btn-secondary" href={href(hero.secondaryHref)}>{hero.secondaryCta}</a>
       </div>
       <p class="hero-note">{note}</p>
     </div>

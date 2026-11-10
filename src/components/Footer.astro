@@ -1,5 +1,5 @@
 ---
-import { nav, preset, year } from '../config/site'
+import { nav, preset, year, href } from '../config/site'
 
 const initials = preset.brand
   .replace(/[^A-Za-zÄÖÜäöüß ]/g, ' ')
@@ -15,7 +15,7 @@ const initials = preset.brand
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="/">
+        <a class="brand" href={href('/')}>
           <span class="brand-mark" aria-hidden="true">{initials}</span>
           <span>{preset.brand}</span>
         </a>
@@ -35,7 +35,7 @@ const initials = preset.brand
         <h3>Services</h3>
         <ul>
           {preset.services.slice(0, 4).map((service) => (
-            <li><a href="/services/">{service.title}</a></li>
+            <li><a href={href('/services/')}>{service.title}</a></li>
           ))}
         </ul>
       </div>
@@ -45,7 +45,7 @@ const initials = preset.brand
         <ul>
           <li><a href={`mailto:${preset.contact.email}`}>{preset.contact.email}</a></li>
           <li><a href={`tel:${preset.contact.phone.replace(/[^+\d]/g, '')}`}>{preset.contact.phone}</a></li>
-          <li><a href="/contact/">{preset.contact.hours}</a></li>
+          <li><a href={href('/contact/')}>{preset.contact.hours}</a></li>
         </ul>
       </div>
     </div>

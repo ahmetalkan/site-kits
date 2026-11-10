@@ -1,9 +1,10 @@
 import type { APIRoute } from 'astro'
-import { preset } from '../config/site'
+import { preset, href } from '../config/site'
 
 const staticRoutes = ['/', '/services/', '/about/', '/contact/', '/blog/']
 
 export const GET: APIRoute = () => {
+  const origin = new URL(preset.demoUrl).origin
   const routes = [
     ...staticRoutes,
     ...preset.posts.map((post) => `/blog/${post.slug}/`),
@@ -11,7 +12,7 @@ export const GET: APIRoute = () => {
 
   const urls = routes
     .map((route) => {
-      const loc = new URL(route, preset.demoUrl).href
+      const loc = new URL(href(route), origin).href
       const priority = route === '/' ? '1.0' : route.startsWith('/blog/') && route !== '/blog/' ? '0.6' : '0.8'
       return `  <url><loc>${loc}</loc><changefreq>monthly</changefreq><priority>${priority}</priority></url>`
     })

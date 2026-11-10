@@ -22,7 +22,12 @@ for (const slug of slugs) {
   console.log(`\n▸ building ${slug} → ${outDir}`)
   const result = spawnSync(bin, ['build'], {
     stdio: 'inherit',
-    env: { ...process.env, SITE_PRESET: slug, OUT_DIR: outDir },
+    env: {
+      ...process.env,
+      SITE_PRESET: slug,
+      OUT_DIR: outDir,
+      BASE_PATH: process.env.BASE_PATH ?? `/site-kits/${slug}`,
+    },
   })
 
   if (result.status !== 0) {

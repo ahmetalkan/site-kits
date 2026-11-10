@@ -1,5 +1,5 @@
 ---
-import { preset } from '../config/site'
+import { preset, href } from '../config/site'
 import Icon from './Icon.astro'
 
 interface Props {
@@ -13,7 +13,7 @@ const {
   title = preset.contact.title,
   body = preset.contact.body,
   cta = preset.hero.primaryCta,
-  href = preset.hero.primaryHref,
+  href: ctaHref = preset.hero.primaryHref,
 } = Astro.props
 ---
 
@@ -24,7 +24,7 @@ const {
         <h2>{title}</h2>
         <p>{body}</p>
       </div>
-      <a class="btn" href={href}>
+      <a class="btn" href={href(ctaHref)}>
         {cta}
         <Icon name="arrow" size={18} />
       </a>

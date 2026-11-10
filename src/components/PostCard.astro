@@ -1,5 +1,6 @@
 ---
 import type { Post } from '../config/presets'
+import { href } from '../config/site'
 
 interface Props {
   post: Post
@@ -14,7 +15,7 @@ const formatted = new Date(post.date).toLocaleDateString('en-US', {
 })
 ---
 
-<a class="post-card" href={`/blog/${post.slug}/`}>
+<a class="post-card" href={href(`/blog/${post.slug}/`)}>
   <time datetime={post.date}>{formatted}</time>
   <h3>{post.title}</h3>
   <p>{post.description}</p>

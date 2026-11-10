@@ -9,6 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "build:all": "tsx scripts/build-all.ts",
+    "showcase": "tsx scripts/build-showcase.ts",
     "check": "astro check"
   },
   "dependencies": {
