@@ -1,0 +1,16 @@
+---
+import { preset } from '../config/site'
+---
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      {preset.stats.map((stat) => (
+        <div class="stat">
+          <strong>{stat.value}</strong>
+          <span>{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

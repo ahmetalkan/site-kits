@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Hero from '../components/Hero.astro'
+import Stats from '../components/Stats.astro'
+import Services from '../components/Services.astro'
+import About from '../components/About.astro'
+import FAQ from '../components/FAQ.astro'
+import CTA from '../components/CTA.astro'
+import PostCard from '../components/PostCard.astro'
+import { preset } from '../config/site'
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: preset.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
+  })),
+}
+---
+
+<BaseLayout
+  title={preset.seo.title}
+  description={preset.seo.description}
+  path="/"
+  jsonLd={faqSchema}
+>
+  <Hero />
+  <Stats />
+  <Services />
+  <About />
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Journal</p>
+        <h2>Recent guides</h2>
+        <p>Short, practical pieces on the questions that come up most often.</p>
+      </div>
+      <div class="posts-grid">
+        {preset.posts.map((post) => <PostCard post={post} />)}
+      </div>
+    </div>
+  </section>
+
+  <FAQ />
+  <CTA />
+</BaseLayout>

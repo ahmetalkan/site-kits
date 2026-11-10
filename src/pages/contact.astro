@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PageHeader from '../components/PageHeader.astro'
+import Icon from '../components/Icon.astro'
+import { preset } from '../config/site'
+
+const { contact } = preset
+const tel = contact.phone.replace(/[^+\d]/g, '')
+---
+
+<BaseLayout
+  title={`Contact — ${preset.brand}`}
+  description={contact.body}
+  path="/contact/"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: `Contact ${preset.brand}`,
+    description: contact.body,
+  }}
+>
+  <PageHeader eyebrow="Contact" title={contact.title} intro={contact.body} />
+
+  <section class="section-tight">
+    <div class="container contact-grid">
+      <div>
+        <ul class="contact-list">
+          <li><Icon name="mail" size={20} /><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+          <li><Icon name="phone" size={20} /><a href={`tel:${tel}`}>{contact.phone}</a></li>
+          <li><Icon name="pin" size={20} /><span>{contact.address}</span></li>
+          <li><Icon name="clock" size={20} /><span>{contact.hours}</span></li>
+        </ul>
+      </div>
+
+      <form class="form" action={`mailto:${contact.email}`} method="post" enctype="text/plain">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="topic">What do you need?</label>
+          <select id="topic" name="topic">
+            {preset.services.map((service) => <option>{service.title}</option>)}
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button class="btn" type="submit">Send message</button>
+        <p class="form-note">This demo form opens your email client. The live site uses a hosted form endpoint.</p>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

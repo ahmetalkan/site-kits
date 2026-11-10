@@ -1,0 +1,64 @@
+---
+import { nav, preset, year } from '../config/site'
+
+const initials = preset.brand
+  .replace(/[^A-Za-zÄÖÜäöüß ]/g, ' ')
+  .split(' ')
+  .filter(Boolean)
+  .map((word) => word[0])
+  .join('')
+  .slice(0, 2)
+  .toUpperCase()
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">{initials}</span>
+          <span>{preset.brand}</span>
+        </a>
+        <p>{preset.seo.description}</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Pages</h3>
+        <ul>
+          {nav.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          {preset.services.slice(0, 4).map((service) => (
+            <li><a href="/services/">{service.title}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href={`mailto:${preset.contact.email}`}>{preset.contact.email}</a></li>
+          <li><a href={`tel:${preset.contact.phone.replace(/[^+\d]/g, '')}`}>{preset.contact.phone}</a></li>
+          <li><a href="/contact/">{preset.contact.hours}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {year} {preset.brand}. All rights reserved.</span>
+      <span class="credit">
+        <span class="credit-dot" aria-hidden="true"></span>
+        {preset.footer.phrase}{' '}
+        <a href={preset.footer.href} rel="noopener">{preset.footer.label}</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/ahmetalkan/site-kits" rel="noopener">{preset.themeName}</a>
+      </span>
+    </div>
+  </div>
+</footer>

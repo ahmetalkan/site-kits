@@ -1,0 +1,21 @@
+---
+import type { Post } from '../config/presets'
+
+interface Props {
+  post: Post
+}
+
+const { post } = Astro.props
+
+const formatted = new Date(post.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+})
+---
+
+<a class="post-card" href={`/blog/${post.slug}/`}>
+  <time datetime={post.date}>{formatted}</time>
+  <h3>{post.title}</h3>
+  <p>{post.description}</p>
+</a>

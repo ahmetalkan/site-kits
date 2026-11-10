@@ -1,0 +1,35 @@
+---
+import { preset } from '../config/site'
+
+interface Props {
+  limit?: number
+  title?: string
+  intro?: string
+}
+
+const {
+  limit,
+  title = 'Questions people ask first',
+  intro = 'The short answers, with the caveats that matter.',
+} = Astro.props
+
+const faqs = typeof limit === 'number' ? preset.faqs.slice(0, limit) : preset.faqs
+---
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>{title}</h2>
+      <p>{intro}</p>
+    </div>
+    <div class="faq-list">
+      {faqs.map((faq) => (
+        <details class="faq-item">
+          <summary>{faq.q}</summary>
+          <p>{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PageHeader from '../components/PageHeader.astro'
+import About from '../components/About.astro'
+import CTA from '../components/CTA.astro'
+import { preset } from '../config/site'
+---
+
+<BaseLayout
+  title={`About — ${preset.brand}`}
+  description={preset.about.title}
+  path="/about/"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: `About ${preset.brand}`,
+    description: preset.about.title,
+  }}
+>
+  <PageHeader eyebrow="About" title={preset.about.title} intro={preset.seo.description} />
+  <About />
+  <section class="section-tight">
+    <div class="container">
+      <div class="prose">
+        {preset.vertical === 'clinic' && (
+          <>
+            <h2>How listings are handled</h2>
+            <p>
+              Entries are compiled from public sources, checked against the provider’s own information where possible,
+              and dated. A listing is never ranked by payment. If something is wrong, the contact page reaches a person
+              who can correct it.
+            </p>
+          </>
+        )}
+        {preset.vertical === 'trade' && (
+          <>
+            <h2>How projects are quoted</h2>
+            <p>
+              Every project starts with the room, not the product: dimensions, services, access and permits. The quote
+              lists materials, labour and the assumptions behind both, so a change is a conversation rather than a
+              surprise.
+            </p>
+          </>
+        )}
+        {preset.vertical === 'charter' && (
+          <>
+            <h2>How charters are priced</h2>
+            <p>
+              The base rate covers the yacht and crew. APA, VAT and gratuity sit on top and vary by destination and
+              season. We show the structure before a deposit, and no yacht is ranked by commission.
+            </p>
+          </>
+        )}
+        <p>
+          This site is a demonstration build of the {preset.themeName} theme. The structure, copy and design are
+          representative of the live site at <a href={preset.site} rel="noopener">{preset.footer.label}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+  <CTA />
+</BaseLayout>

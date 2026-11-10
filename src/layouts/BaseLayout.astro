@@ -1,0 +1,66 @@
+---
+import { preset } from '../config/site'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import '../styles/global.css'
+
+interface Props {
+  title: string
+  description: string
+  path?: string
+  noindex?: boolean
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[]
+}
+
+const { title, description, path = '/', noindex = false, jsonLd } = Astro.props
+const canonical = new URL(path, preset.demoUrl).href
+const palette = preset.palette
+
+const paletteCss = `html:root{--bg:${palette.bg};--surface:${palette.surface};--ink:${palette.ink};--muted:${palette.muted};--brand:${palette.brand};--brand-ink:${palette.brandInk};--accent:${palette.accent};--border:${palette.border};}`
+
+const base = {
+  '@context': 'https://schema.org',
+  '@type': preset.schemaType,
+  name: preset.brand,
+  url: preset.site,
+  description: preset.seo.description,
+  email: preset.contact.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: preset.contact.address,
+  },
+}
+
+const graph = Array.isArray(jsonLd) ? [base, ...jsonLd] : jsonLd ? [base, jsonLd] : [base]
+---
+
+<!doctype html>
+<html lang={preset.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={preset.brand} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content={palette.brand} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <style is:inline set:html={paletteCss} />
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
+  </head>
+  <body data-core={preset.vertical}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

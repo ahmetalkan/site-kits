@@ -1,0 +1,24 @@
+---
+import { preset } from '../config/site'
+import Icon from './Icon.astro'
+---
+
+<section class="section">
+  <div class="container about-grid">
+    <div class="about-copy">
+      <p class="eyebrow">About</p>
+      <h2>{preset.about.title}</h2>
+      {preset.about.body.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <div class="about-panel">
+      <ul class="checklist">
+        {preset.about.bullets.map((bullet) => (
+          <li>
+            <Icon name="check" size={18} />
+            <span>{bullet}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

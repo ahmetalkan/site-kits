@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PageHeader from '../components/PageHeader.astro'
+import Services from '../components/Services.astro'
+import FAQ from '../components/FAQ.astro'
+import CTA from '../components/CTA.astro'
+import { preset } from '../config/site'
+---
+
+<BaseLayout
+  title={`Services — ${preset.brand}`}
+  description={`Services covered by ${preset.brand}: ${preset.services.map((s) => s.title).join(', ')}.`}
+  path="/services/"
+>
+  <PageHeader
+    eyebrow="Services"
+    title="What we cover, in detail."
+    intro={preset.seo.description}
+  />
+  <Services title="Every service on the site" intro={preset.services.map((s) => s.title).join(' · ')} />
+  <FAQ limit={2} title="Before you book" />
+  <CTA />
+</BaseLayout>

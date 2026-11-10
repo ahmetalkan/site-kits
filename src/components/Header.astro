@@ -1,0 +1,40 @@
+---
+import { nav, preset } from '../config/site'
+import Icon from './Icon.astro'
+
+const path = Astro.url.pathname
+const initials = preset.brand
+  .replace(/[^A-Za-zÄÖÜäöüß ]/g, ' ')
+  .split(' ')
+  .filter(Boolean)
+  .map((word) => word[0])
+  .join('')
+  .slice(0, 2)
+  .toUpperCase()
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">{initials}</span>
+      <span>{preset.brand}</span>
+    </a>
+
+    <nav class="nav nav-desktop" aria-label="Primary">
+      {nav.map((item) => (
+        <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+
+    <a class="btn btn-small header-cta" href={preset.hero.primaryHref}>{preset.hero.primaryCta}</a>
+
+    <details class="nav-toggle">
+      <summary><Icon name="menu" size={18} /> Menu</summary>
+      <nav class="nav" aria-label="Mobile">
+        {nav.map((item) => (
+          <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
+        ))}
+      </nav>
+    </details>
+  </div>
+</header>

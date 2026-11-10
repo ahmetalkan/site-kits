@@ -1,0 +1,51 @@
+---
+import { preset } from '../config/site'
+import Icon from './Icon.astro'
+
+interface Props {
+  title?: string
+  intro?: string
+  alt?: boolean
+}
+
+const defaults = {
+  clinic: {
+    title: 'What we cover',
+    intro:
+      'Practical detail on the services people actually ask about, written to be read before a first appointment.',
+  },
+  trade: {
+    title: 'What we build',
+    intro: 'Practical detail on the work, the materials and the questions worth settling before a quote.',
+  },
+  charter: {
+    title: 'How we plan',
+    intro: 'How the options compare, what the budget covers and what to confirm before signing.',
+  },
+} as const
+
+const {
+  title = defaults[preset.vertical].title,
+  intro = defaults[preset.vertical].intro,
+  alt = false,
+} = Astro.props
+---
+
+<section class:list={['section', { 'section-alt': alt }]}>
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Services</p>
+      <h2>{title}</h2>
+      <p>{intro}</p>
+    </div>
+    <div class="services-grid">
+      {preset.services.map((service) => (
+        <article class="service-card">
+          <span class="service-icon"><Icon name={service.icon} /></span>
+          <h3>{service.title}</h3>
+          <p>{service.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

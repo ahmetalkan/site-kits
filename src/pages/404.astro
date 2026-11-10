@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { preset } from '../config/site'
+---
+
+<BaseLayout
+  title={`Page not found — ${preset.brand}`}
+  description="That page does not exist."
+  path="/404.html"
+  noindex
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">404</p>
+      <h1>That page does not exist.</h1>
+      <p class="lede" style="margin-top:1rem">The link may be old, or the page may have moved. Start from the homepage or the guides index.</p>
+      <p style="margin-top:1.6rem">
+        <a class="btn" href="/">Back to the homepage</a>
+        <a class="btn btn-secondary" href="/blog/">Read the guides</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
