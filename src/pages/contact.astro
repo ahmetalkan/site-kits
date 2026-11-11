@@ -25,13 +25,14 @@ const tel = contact.phone.replace(/[^+\d]/g, '')
     <div class="container contact-grid">
       <div>
         <ul class="contact-list">
-          <li><Icon name="mail" size={20} /><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
-          <li><Icon name="phone" size={20} /><a href={`tel:${tel}`}>{contact.phone}</a></li>
-          <li><Icon name="pin" size={20} /><span>{contact.address}</span></li>
-          <li><Icon name="clock" size={20} /><span>{contact.hours}</span></li>
+          {contact.email && <li><Icon name="mail" size={20} /><a href={`mailto:${contact.email}`}>{contact.email}</a></li>}
+          {contact.phone && <li><Icon name="phone" size={20} /><a href={`tel:${tel}`}>{contact.phone}</a></li>}
+          {contact.address && <li><Icon name="pin" size={20} /><span>{contact.address}</span></li>}
+          {contact.hours && <li><Icon name="clock" size={20} /><span>{contact.hours}</span></li>}
         </ul>
       </div>
 
+      {contact.email ? (
       <form class="form" action={`mailto:${contact.email}`} method="post" enctype="text/plain">
         <div class="field">
           <label for="name">Name</label>
@@ -55,6 +56,9 @@ const tel = contact.phone.replace(/[^+\d]/g, '')
         <button class="btn" type="submit">Send message</button>
         <p class="form-note">This demo form opens your email client. The live site uses a hosted form endpoint.</p>
       </form>
+      ) : (
+        <p class="form-note">Contact details for this site are coming soon.</p>
+      )}
     </div>
   </section>
 </BaseLayout>
