@@ -43,9 +43,9 @@ const initials = preset.brand
       <div class="footer-col">
         <h3>Contact</h3>
         <ul>
-          <li><a href={`mailto:${preset.contact.email}`}>{preset.contact.email}</a></li>
-          <li><a href={`tel:${preset.contact.phone.replace(/[^+\d]/g, '')}`}>{preset.contact.phone}</a></li>
-          <li><a href={href('/contact/')}>{preset.contact.hours}</a></li>
+          {preset.contact.email && <li><a href={`mailto:${preset.contact.email}`}>{preset.contact.email}</a></li>}
+          {preset.contact.phone && <li><a href={`tel:${preset.contact.phone.replace(/[^+\d]/g, '')}`}>{preset.contact.phone}</a></li>}
+          {preset.contact.hours && <li><a href={href('/contact/')}>{preset.contact.hours}</a></li>}
         </ul>
       </div>
     </div>
